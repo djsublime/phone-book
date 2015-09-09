@@ -1,6 +1,6 @@
-## Laravel PHP Framework
+## Phone Book
 
-[preview](https://draganjovan.com/phone-book)
+[preview](http://draganjovan.com/phone-book)
 
 Phone book app is based on Laravel 4.2 Framework
 
@@ -8,8 +8,14 @@ Phone book app is based on Laravel 4.2 Framework
 
 - git clone https://github.com/djsublime/phone-book.git {directory}
 - cd {directory}
-- sudo chmod -R 777 app/storage/ - setting write permission to storage folder
+- sudo chmod -R 777 app/storage/ - set write permission to storage folder
 - go to http://localhost/{directory}/public
+#DB setup
+- create new database.
+- db user must have alter privilage on db.
+ #terminal
+ - php artisan migrate
+ - php artisan db:seed
 
 
 
