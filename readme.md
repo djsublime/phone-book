@@ -1,4 +1,4 @@
-## Phone Book
+## Phone Book webphp 5 app
 
 [preview](http://draganjovan.com/phone-book)
 
@@ -12,8 +12,8 @@ Phone book app is based on Laravel 4.2 Framework
 - go to http://localhost/{directory}/public
 #DB setup
 - create new database.
-- db user must have alter privilage on db.
- #terminal
+- db user must have alter privilage on d
+- #terminal:
  - php artisan migrate
  - php artisan db:seed
 
