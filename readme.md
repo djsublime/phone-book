@@ -9,13 +9,23 @@ Phone book app is based on Laravel 4.2 Framework
 - git clone https://github.com/djsublime/phone-book.git {directory}
 - cd {directory}
 - sudo chmod -R 777 app/storage/ - set write permission to storage folder
-- go to http://localhost/{directory}/public
+
 #DB setup
+
 - create new database.
 - db user must have alter privilage on d
 - #terminal:
  - php artisan migrate
  - php artisan db:seed
+
+#Frontend assets
+
+- #terminal
+ - cd {directory}/public
+ - bower install
+
+
+ Go to http://localhost/{app-path}/public
 
 
 
