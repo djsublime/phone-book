@@ -17,7 +17,7 @@ class ContactController extends \BaseController {
 	public function index()
 	{
 
-		$data = $this->model->orderBy('name')->get();
+		$data = $this->model->get();
 
 		return Response::json($data->toArray());
 	}

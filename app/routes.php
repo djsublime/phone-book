@@ -21,11 +21,11 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-/*Route::group(array('prefix' => 'dashboard'), function(){ // 'before' => 'api.auth'
+Route::group(array('prefix' => 'dashboard'), function(){ // 'before' => 'api.auth'
 
-	Route::get('phone-book', 'PhoneBookController');
+	Route::get('phone-book', ['uses'=>'PhoneBookController@index', 'as'=> 'phone-book']);
 
-});*/
+});
 
 
 Route::group(array('prefix' => 'resource'), function(){ // 'before' => 'api.auth'

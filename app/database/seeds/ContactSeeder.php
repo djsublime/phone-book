@@ -12,7 +12,19 @@ class ContactSeeder extends Seeder {
 
 		];
 
-		Contact::insert($data);
+		$random = [];
+
+		for($i = 0; $i < 30; $i++){
+
+			$random[$i]['name'] = str_random(7);
+			$random[$i]['surname'] = str_random(10);
+			$random[$i]['phone'] = rand(1000000,9000000);
+			$random[$i]['address'] = str_random(7) . ' ' . str_random(15);
+			$random[$i]['comment'] = str_random(7) . ' ' . str_random(15);
+
+		}
+
+		Contact::insert(array_merge($data,$random));
 	}
 
 }

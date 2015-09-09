@@ -1,4 +1,4 @@
-## Phone Book webphp 5 app
+## Phone Book web php 5 app
 
 [preview](http://draganjovan.com/phone-book)
 
