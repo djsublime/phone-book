@@ -1,4 +1,4 @@
-## Phone Book web php 5 app
+# Phone Book web php 5 app
 
 [preview](http://draganjovan.com/phone-book)
 
@@ -9,15 +9,15 @@ Phone book app is based on Laravel 4.2 Framework
 - cd {directory}
 - sudo chmod -R 777 app/storage/ - set write permission to storage folder
 
-#DB setup
+##DB setup
 - create new database.
 - DB user must have alter privilage on DB
 - #terminal:
  - php artisan migrate
  - php artisan db:seed
 
-#Frontend assets
-- #terminal
+##Frontend assets
+- ###terminal
  - cd {directory}/public
  - bower install
 
