@@ -21,9 +21,13 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::group(array('prefix' => 'dashboard'), function(){ // 'before' => 'api.auth'
+Route::group(array('prefix' => 'dashboard'), function(){
 
 	Route::get('phone-book', ['uses'=>'PhoneBookController@index', 'as'=> 'phone-book']);
+	Route::get('phone-book/{id}/edit', ['uses'=>'PhoneBookController@edit', 'as'=> 'phone-book.edit']);
+	Route::post('phone-book/{id}/update', ['uses'=>'PhoneBookController@update', 'as'=> 'phone-book.update', 'before' => 'csrf']);
+	Route::post('phone-book', ['uses'=>'PhoneBookController@save', 'as'=> 'phone-book.save', 'before' => 'csrf']);
+	Route::get('phone-book/{id}/delete', ['uses'=>'PhoneBookController@delete', 'as'=> 'phone-book.delete']);
 
 });
 

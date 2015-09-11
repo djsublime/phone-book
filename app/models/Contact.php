@@ -23,4 +23,21 @@ class Contact extends Eloquent {
 	 */
 	protected $fillable = array('name','surname','phone','address','comment');
 
+	public function validate()
+	{
+
+		$validator = Validator::make($this->attributes, array(
+			'name'  => 'required|min:3',
+			'surname' => 'required|min:3',
+			'phone' => 'required|integer|unique:contact'
+		));
+
+		if ($validator->fails())
+		{
+			return $validator->messages();
+		}
+
+		return false;
+	}
+
 }

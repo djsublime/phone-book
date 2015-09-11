@@ -15,4 +15,16 @@ class BaseController extends Controller {
 		}
 	}
 
+	protected function message($type, $title, $content){
+
+		$message = [
+			'type'=> $type,
+			'title'=> $title,
+			'content'=> $content
+		];
+
+		return $message;
+
+	}
+
 }
