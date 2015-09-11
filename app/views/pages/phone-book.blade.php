@@ -58,9 +58,9 @@
 						<input type="text" class="form-control" name="surname" value="" placeholder="last name">
 						<input type="text" class="form-control" name="phone" value="" placeholder="phone">
 						<input type="submit" class="form-control" name="filter" value="filter">
-						<a href="{{route('phone-book')}}">reset</a>
 					</div>
 				</form>
+				<a href="{{route('phone-book')}}" class="btn btn-primary pull-right">reset</a>
 			</div>
 			<div class="panel-body">
 			<table class="table table-hover table-condensed">
