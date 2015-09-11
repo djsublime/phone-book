@@ -24,12 +24,21 @@ class Contact extends Eloquent {
 	protected $fillable = array('name','surname','phone','address','comment');
 
 	public function validate()
-	{
+	{	
+
+		if(isset($this->attributes['id'])){
+
+			$update_id = $this->attributes['id'];
+			
+		}else{
+
+			$update_id = false;
+		}
 
 		$validator = Validator::make($this->attributes, array(
 			'name'  => 'required|min:3',
 			'surname' => 'required|min:3',
-			'phone' => 'required|integer|unique:contact'
+			'phone' => 'required|integer|unique:contact'. ($update_id ? ",phone,$update_id" : '')
 		));
 
 		if ($validator->fails())

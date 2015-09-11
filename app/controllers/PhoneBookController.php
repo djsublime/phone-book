@@ -9,11 +9,27 @@ class PhoneBookController extends BaseController {
 
 
 	public function index()
-	{
+	{	
 
-		$data = Contact::paginate(10);
+		$query = Contact::whereRaw(' 1 ');
 
-		Debugbar::info($data->toArray());
+		if(Input::has('filter')){
+
+			$conditions = array_except(Input::all(), array('filter', 'to', 'filter'));
+
+			foreach($conditions as $column => $value)
+			{
+			  $query->where($column, 'LIKE', $value.'%');
+			}
+
+			$data = $query->paginate(5);
+
+			Debugbar::info($data->toArray());
+
+		}else{
+
+			$data = Contact::paginate(5);
+		}
 
 		$this->layout->content = View::make('pages.phone-book')
 								->withData($data);
