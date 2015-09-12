@@ -40,9 +40,9 @@
 
     .controller('AppCtrl', AppCtrl);
 
-    AppCtrl.$inject = ['$scope', '$filter', 'toastr', 'Contact'];
+    AppCtrl.$inject = ['$scope', '$filter', '$window', 'toastr', 'Contact'];
 
-    function AppCtrl($scope, $filter, toastr, Contact) {
+    function AppCtrl($scope, $filter, $window, toastr, Contact) {
 
         var vm = this;
 
@@ -52,8 +52,8 @@
 
         // INDEX METHOD 
 
-        vm.paginateSet = {};    
-        vm.paginateSet.per_page = 10;        
+        vm.paginateSet = {};
+        vm.paginateSet.per_page = 10;
 
         vm.paginateFn = function paginateFn(page, per_page) {
 
@@ -77,7 +77,57 @@
             });
         };
 
-        vm.paginateFn();
+        vm.paginateFn(); // call resource
+
+        vm.newEntry = {};
+
+        vm.addEntry = function() {
+
+            Entry.save(vm.newEntry, function(data) {
+
+                vm.colection.data.push(data);
+
+                toastr.success('Success', 'New Entry');
+
+                console.log(JSON.stringify(data));
+
+            }, function(error) {
+
+                toastr.error(error.data.error, 'Error');
+
+                console.log(JSON.stringify(error));
+
+            });
+
+        };
+
+        // DELETE METHOD
+        vm.deleteEntry = function(id) {
+
+            var deleteEntry = $window.confirm('Are you absolutely sure you want to delete?');
+
+            if (deleteEntry) {
+
+                Entry.delete({
+                    id: id
+                }, function(data) {
+
+                    vm.colection.data = $filter('filter')(vm.colection.data, {
+                        id: '!' + id
+                    });
+
+                    toastr.success('Deleted - success', 'Resource');
+
+                }, function(error) {
+
+                    toastr.error(error.data.error, 'Error');
+
+                    logger.info(JSON.stringify(error));
+
+                });
+
+            }
+        };
 
     }
 

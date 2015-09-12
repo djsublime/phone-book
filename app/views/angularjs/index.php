@@ -67,7 +67,7 @@
 											<a href class="btn btn-warning btn-sm">
 												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 											</a>
-											<a href class="btn btn-danger btn-sm">
+											<a href class="btn btn-danger btn-sm" ng-click="vm.deleteEntry(contact.id)">
 												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 											</a>
 										</td>
@@ -102,29 +102,29 @@
 							<h3 class="panel-title text-center text-uppercase">Add new contact</h3>
 						</div>
 						<div class="panel-body">
-							<form ng-submit accept-charset="UTF-8">
+							<form ng-submit="vm.addEntry()" accept-charset="UTF-8">
 								<div class="form-group has-success">
 									<label for="name">First Name</label>
-									<input class="form-control input-sm" required="required" name="name" type="text" id="name">
+									<input class="form-control input-sm" required="required" ng-model="vm.newEntry.name" type="text" id="name">
 									<p class="help-block" ng-bind=""></p>
 								</div>
 								<div class="form-group has-error">
 									<label for="surname">Last Name</label>
-									<input class="form-control input-sm" required="required" name="surname" type="text" id="surname">
+									<input class="form-control input-sm" required="required" ng-model="vm.newEntry.surname" type="text" id="surname">
 									<p class="help-block" ng-bind=""></p>
 								</div>
 								<div class="form-group">
 									<label for="phone">Phone</label>
-									<input class="form-control input-sm" required="required" name="phone" type="text" id="phone">
+									<input class="form-control input-sm" required="required" ng-model="vm.newEntry.phone" type="text" id="phone">
 									<p class="help-block" ng-bind=""></p>								
 								</div>
 								<div class="form-group">
 									<label for="address">Address</label>
-									<input class="form-control input-sm" name="address" type="text" id="address">
+									<input class="form-control input-sm" ng-model="vm.newEntry.address" type="text" id="address">
 								</div>
 								<div class="form-group">
 									<label for="comment">Comment</label>
-									<textarea class="form-control input-sm" name="comment" cols="50" rows="10" id="comment"></textarea>
+									<textarea class="form-control input-sm" ng-model="vm.newEntry.comment" cols="50" rows="10" id="comment"></textarea>
 								</div>
 								<div class="form-group">
 									<input class="form-control input-sm btn btn-success" type="submit" value="Save Contact">

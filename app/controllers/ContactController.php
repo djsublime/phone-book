@@ -48,7 +48,7 @@ class ContactController extends \BaseController {
 	{
 		$data = new $this->model(Input::get());
 
-		//$data->validate();
+		$data->validate();
 
 		if (!$data->save()){
 
