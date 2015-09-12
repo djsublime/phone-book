@@ -1,0 +1,21 @@
+footer {
+    /*position: absolute;*/
+    width: 100%;
+    background: whitesmoke;
+    bottom: 50px;
+    left: 0;
+    min-height: 50px;
+    line-height: 50px;
+}
+
+main {
+    margin-bottom: 60px;
+}
+.pagination{
+	margin: 0;
+}
+.phone-book .panel-body{
+	height: 500px;
+	overflow: auto;
+	position: relative;
+}

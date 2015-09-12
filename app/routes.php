@@ -21,6 +21,11 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('/phonebook-ngapp', function()
+{
+	return View::make('angularjs.index');
+});
+
 Route::group(array('prefix' => 'dashboard'), function(){
 
 	Route::get('phone-book', ['uses'=>'PhoneBookController@index', 'as'=> 'phone-book']);

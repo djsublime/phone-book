@@ -4,6 +4,7 @@
 
     angular.module('phoneBook', [
             'ngResource',
+            'angular.filter',
             'toastr'
         ])
         .run(['$rootScope', '$window', function run($rootScope, $window) {
@@ -49,21 +50,34 @@
 
         var Entry = Contact;
 
-        // INDEX METHOD
+        // INDEX METHOD 
 
-        vm.colection = Entry.query({page:1,per_page:5},function() {
+        vm.paginateSet = {};    
+        vm.paginateSet.per_page = 10;        
 
-            //logger.info(JSON.stringify(vm.colection));
-            console.log(JSON.stringify(vm.colection));
+        vm.paginateFn = function paginateFn(page, per_page) {
 
-            toastr.success('Loaded - success', 'Resource');
+            page = page || 1;
+            per_page = per_page || 10;
 
-        }, function(error) {
+            vm.colection = Entry.query({
+                page: page,
+                per_page: per_page
+            }, function() {
 
-            toastr.error('error', 'aResource');
+                //logger.info(JSON.stringify(vm.colection));
+                console.log(JSON.stringify(vm.colection));
 
-        });
+                toastr.success('Loaded - success', 'Resource');
 
+            }, function(error) {
+
+                toastr.error('error', 'aResource');
+
+            });
+        };
+
+        vm.paginateFn();
 
     }
 

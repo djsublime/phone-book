@@ -17,7 +17,10 @@ class ContactController extends \BaseController {
 	public function index()
 	{
 
-		$data = $this->model->get();
+
+		Input::has('per_page')? $perPage = Input::get('per_page'): $perPage = 10;
+
+		$data = $this->model->paginate($perPage);
 
 		return Response::json($data->toArray());
 	}
