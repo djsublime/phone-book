@@ -28,17 +28,7 @@
 				<div class="col-sm-9">
 					<div class="panel panel-default phone-book">
 						<div class="panel-heading clearfix">
-							<form class="form-inline">
-								<div class="form-group">
-									<input type="text" class="form-control" name="name" value="" placeholder="first name">
-									<input type="text" class="form-control" name="surname" value="" placeholder="last name">
-									<input type="text" class="form-control" name="phone" value="" placeholder="phone">
-									<input type="submit" class="form-control" name="filter" value="filter">
-								</div>
-								<div class="form-group pull-right">
-									<a href class="btn btn-primary">reset</a>
-								</div>
-							</form>
+							<h3 class="panel-title text-center text-uppercase">Contact list</h3>
 						</div>
 						<div class="panel-body">
 							<table class="table table-striped">
@@ -53,9 +43,19 @@
 										<th nowrap>Updated</th>
 										<th nowrap>Action</th>
 									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.name"></td>
+										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.surname"></td>
+										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.phone"></td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="(key,contact) in vm.colection.data">
+									<tr ng-repeat="(key,contact) in vm.colection.data | filter:{name:vm.filter.name,surname:vm.filter.surname,phone:vm.filter.phone}">
 										<td ng-bind="(vm.colection.from + key)"></td>
 										<td ng-bind="contact.name"></td>
 										<td ng-bind="contact.surname"></td>
