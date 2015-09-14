@@ -1,0 +1,17 @@
+body{
+
+}
+.landing-box {
+	background-color: white;
+    width: 60%;
+    margin: 7% auto;
+}
+.landing-box h1{
+	font-size: 35px;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+.landing-box .content{
+	padding: 10px;
+}

@@ -1,7 +1,7 @@
 @section('content')
 <div class="row">
 	<div class="page-head">
-		<h1>Phone Book</h1>
+		<h1>Phone Book | NO-JS</h1>
 	</div>
 </div>
 <div class="row">

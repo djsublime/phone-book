@@ -13,15 +13,13 @@
 
 App::missing(function($exception)
 {
-    return View::make('hello')->withMessage('Page Not Found !');
+    return Redirect::route('landing')->with('message', ['type'=>'danger','title'=>'','content'=>'Page Not Found !!']);
 });
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', ['uses'=>'PhoneBookController@landing', 'as'=> 'landing']);
 
-Route::get('/phonebook-ngapp', function()
+// AngularJS layout
+Route::get('/phonebook-ngapp',['uses'=>'NgController@index', 'as'=>'ngapp'],  function()
 {
 	return View::make('angularjs.index');
 });

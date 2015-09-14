@@ -1,1 +1,1 @@
-<div class="copyright text-right">© Copyright 2015 horisen.com</div>
+<div class="copyright text-right">© Copyright 2015 draganjovan.com</div>

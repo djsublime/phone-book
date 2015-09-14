@@ -8,22 +8,19 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Phone Book</a>
+			<a class="navbar-brand" href="#">Phone Book Web App</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="{{url('/')}}">Home</a></li>
-				<li><a href="{{route('phone-book', null)}}">App <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="{{route('phone-book', null)}}">NO-JS app<span class="sr-only">(current)</span></a></li>
+				<li><a href="{{route('ngapp', null)}}">RESTfull app<span class="sr-only">(current)</span></a></li>
 			</ul> 
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
+			<a href="https://github.com/djsublime/phone-book" target="_blank" class="btn btn-danger navbar-btn pull-right">
+				Github
+			</a>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>

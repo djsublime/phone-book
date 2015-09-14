@@ -1,9 +1,10 @@
-# Phone Book web php 5 app
+# Phone Book Web App
 
 [preview](http://draganjovan.com/phone-book)
 
-This is just an example app and is made for the purpose of job interview.
-Phone book app is based on 3 great framework Laravel 4.2 Framework , AngularJS and Twitter Boostrap  RESTfull way
+- This is just an example app and is made for the purpose of job interview.
+- Phone book app is based on 3 great framework Laravel 4.2 Framework , AngularJS and Twitter Boostrap
+- RESTfull way
 
 ## Installation
  ```
@@ -29,7 +30,7 @@ cd {directory}/public
 bower install
  ```
 
- ##Run Aplication
+##Run Aplication
 
 LAMP:
 - Go to http://localhost/{app-path}/public

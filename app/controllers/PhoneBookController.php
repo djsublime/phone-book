@@ -115,4 +115,9 @@ class PhoneBookController extends BaseController {
 		return Redirect::route('phone-book')->with('message', $message);
 	}
 
+	public function landing(){
+
+		$this->layout->content = View::make('pages.landing');
+	}
+
 }
