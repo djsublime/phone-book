@@ -28,7 +28,7 @@
 				<div class="col-sm-9">
 					<div class="panel panel-default phone-book">
 						<div class="panel-heading clearfix">
-							<h3 class="panel-title text-center text-uppercase">Contact list</h3>
+							<h1 class="panel-title text-center text-uppercase">Contact list</h1>
 						</div>
 						<div class="panel-body">
 							<table class="table table-striped">
@@ -45,9 +45,9 @@
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
-										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.name"></td>
-										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.surname"></td>
-										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.phone"></td>
+										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.name" placeholder="by name"></td>
+										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.surname" placeholder="by surname"></td>
+										<td><input type="text" class="form-control input-sm" ng-model="vm.filter.phone" placeholder="by phone"></td>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
@@ -55,7 +55,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="(key,contact) in vm.colection.data | filter:{name:vm.filter.name,surname:vm.filter.surname,phone:vm.filter.phone}">
+									<tr ng-repeat="(key,contact) in vm.colection.data | filter:{name:vm.filter.name,surname:vm.filter.surname,phone:vm.filter.phone}" 
+										ng-class="{'bg-success': (vm.form.updated === contact.id), 'bg-warning': ((vm.form.data.id === contact.id) && (vm.form.mode === 'edit'))}">
 										<td ng-bind="(vm.colection.from + key)"></td>
 										<td ng-bind="contact.name"></td>
 										<td ng-bind="contact.surname"></td>
@@ -64,7 +65,7 @@
 										<td ng-bind="contact.comment"></td>
 										<td ng-bind="contact.updated_at"></td>
 										<td nowrap="">
-											<a href class="btn btn-warning btn-sm">
+											<a ng-click="vm.editFn(contact)" href class="btn btn-info btn-sm">
 												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 											</a>
 											<a href class="btn btn-danger btn-sm" ng-click="vm.deleteEntry(contact.id)">
@@ -79,8 +80,8 @@
 							<form class="pull-left form-inline">
 								<div class="form-group">
 									<label >Per page: </label>
-					  				<select ng-model="vm.paginateSet.per_page" ng-change="vm.paginateFn(1,vm.paginateSet.per_page)" class="form-control input-sm">
-						  				<option ng-repeat="sopt in [5,10,15,20,50]" value="{{sopt}}" ng-selected="vm.paginateSet.per_page == sopt" ng-bind="sopt"></option>
+					  				<select ng-model="vm.table.per_page" ng-change="vm.paginateFn(1,vm.table.per_page)" class="form-control input-sm">
+						  				<option ng-repeat="sopt in [5,10,15,20,50]" value="{{sopt}}" ng-selected="vm.table.per_page == sopt" ng-bind="sopt"></option>
 					  				</select>
 								</div>
 								<div class="form-group">
@@ -91,43 +92,46 @@
 							  <li 
 							  	ng-class="{'active':(i === vm.colection.current_page)}" 
 						  		ng-if="i !== 0" 
-						  		ng-repeat="i in [] | range: vm.colection.last_page"><a href ng-click="vm.paginateFn(i,vm.paginateSet.per_page)" ng-bind="i"></a></li>
+						  		ng-repeat="i in [] | range: (vm.colection.last_page + 1)"><a href ng-click="vm.paginateFn(i,vm.table.per_page)" ng-bind="i"></a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-3">
-					<div class="panel panel-default">
+					<div class="panel" ng-class="{'panel-success':(vm.form.mode === 'add'), 'panel-warning':(vm.form.mode === 'edit')}">
 						<div class="panel-heading">
-							<h3 class="panel-title text-center text-uppercase">Add new contact</h3>
+							<h3 class="panel-title text-center text-uppercase">
+								Add / Edit Contact
+							</h3>
+							<a href ng-if="vm.form.mode === 'edit'" ng-click="vm.form.mode = 'add';vm.form.data = {}" class="btn btn-warning btn-sm btn-block"> Cancel </a>
 						</div>
 						<div class="panel-body">
-							<form ng-submit="vm.addEntry()" accept-charset="UTF-8">
-								<div class="form-group has-success">
+							<form ng-submit="vm.submitFn()" accept-charset="UTF-8">
+								<div ng-class="{'has-error':vm.form.errors.name}" class="form-group">
 									<label for="name">First Name</label>
-									<input class="form-control input-sm" required="required" ng-model="vm.newEntry.name" type="text" id="name">
-									<p class="help-block" ng-bind=""></p>
+									<input class="form-control input-sm" ng-model="vm.form.data.name" type="text" id="name">
+									<p class="help-block" ng-bind="vm.form.errors.name"></p>
 								</div>
-								<div class="form-group has-error">
+								<div ng-class="{'has-error':vm.form.errors.surname}" class="form-group">
 									<label for="surname">Last Name</label>
-									<input class="form-control input-sm" required="required" ng-model="vm.newEntry.surname" type="text" id="surname">
-									<p class="help-block" ng-bind=""></p>
+									<input class="form-control input-sm" ng-model="vm.form.data.surname" type="text" id="surname">
+									<p class="help-block" ng-bind="vm.form.errors.surname"></p>
 								</div>
-								<div class="form-group">
+								<div ng-class="{'has-error':vm.form.errors.phone}" class="form-group">
 									<label for="phone">Phone</label>
-									<input class="form-control input-sm" required="required" ng-model="vm.newEntry.phone" type="text" id="phone">
-									<p class="help-block" ng-bind=""></p>								
+									<input class="form-control input-sm" ng-model="vm.form.data.phone" type="text" id="phone">
+									<p class="help-block" ng-bind="vm.form.errors.phone"></p>								
 								</div>
 								<div class="form-group">
 									<label for="address">Address</label>
-									<input class="form-control input-sm" ng-model="vm.newEntry.address" type="text" id="address">
+									<input class="form-control input-sm" ng-model="vm.form.data.address" type="text" id="address">
 								</div>
 								<div class="form-group">
 									<label for="comment">Comment</label>
-									<textarea class="form-control input-sm" ng-model="vm.newEntry.comment" cols="50" rows="10" id="comment"></textarea>
+									<textarea class="form-control input-sm" ng-model="vm.form.data.comment" cols="50" rows="10" id="comment"></textarea>
 								</div>
 								<div class="form-group">
-									<input class="form-control input-sm btn btn-success" type="submit" value="Save Contact">
+									<input class="form-control btn btn-success" type="submit" value="Save">
 								</div>
 							</form>
 						</div>

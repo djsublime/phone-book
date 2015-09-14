@@ -15,7 +15,17 @@ main {
 	margin: 0;
 }
 .phone-book .panel-body{
-	height: 500px;
-	overflow: auto;
-	position: relative;
+	min-height: 500px;
+}
+.table-striped>tbody>tr.bg-success:nth-of-type(odd){
+    background-color: #dff0d8;
+}
+.table-striped>tbody>tr.bg-success:nth-of-type(even){
+    background-color: #dff0d8;
+}
+.table-striped>tbody>tr.bg-warning:nth-of-type(odd){
+    background-color: #fcf8e3;
+}
+.table-striped>tbody>tr.bg-warning:nth-of-type(even){
+    background-color: #fcf8e3;
 }
