@@ -2,7 +2,8 @@
 
 [preview](http://draganjovan.com/phone-book)
 
-Phone book app is based on Laravel 4.2 Framework
+This is just an example app and is made for the purpose of job interview.
+Phone book app is based on 3 great framework Laravel 4.2 Framework , AngularJS and Twitter Boostrap  RESTfull way
 
 ## Installation
  ```
@@ -12,12 +13,15 @@ sudo chmod -R 777 app/storage/
  ```
 
 ##DB setup
-- create new database.
-- DB user must have alter privilage on DB
+- create new database. (If MySQl DB server, user must have alter privilage.)
+- in app/config/database.php set default connection and change connection values
+
  ```
 php artisan migrate
 php artisan db:seed
  ```
+
+ if chosen db driver sqlite set sqlite file to be writable
 
 ##Frontend assets
  ```
@@ -25,7 +29,18 @@ cd {directory}/public
 bower install
  ```
 
- Go to http://localhost/{app-path}/public
+ ##Run Aplication
+
+LAMP:
+- Go to http://localhost/{app-path}/public
+
+PHP SERVER / SQLITE:
+
+ ```
+php -S localhost:8080
+ ```
+ - Go to http://localhost:8080
+
 
 
 
@@ -33,6 +48,14 @@ bower install
 
 Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
 
+## Official AngularJS Framework Documentation
+
+Documentation for the entire framework can be found on the [AngularJS website](https://angularjs.org/).
+
+## Official Twitter Boostrap Framework Documentation
+
+Documentation for the entire framework can be found on the [Boostrap website](http://getbootstrap.com).
+
 ### License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+[MIT license](http://opensource.org/licenses/MIT)

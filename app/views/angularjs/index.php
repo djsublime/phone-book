@@ -99,11 +99,11 @@
 				</div>
 				<div class="col-sm-3">
 					<div class="panel" ng-class="{'panel-success':(vm.form.mode === 'add'), 'panel-warning':(vm.form.mode === 'edit')}">
+						<a href ng-if="vm.form.mode === 'edit'" ng-click="vm.form.mode = 'add';vm.form.data = {}" class="btn btn-warning btn-sm btn-block"> Cancel </a>
 						<div class="panel-heading">
 							<h3 class="panel-title text-center text-uppercase">
 								Add / Edit Contact
 							</h3>
-							<a href ng-if="vm.form.mode === 'edit'" ng-click="vm.form.mode = 'add';vm.form.data = {}" class="btn btn-warning btn-sm btn-block"> Cancel </a>
 						</div>
 						<div class="panel-body">
 							<form ng-submit="vm.submitFn()" accept-charset="UTF-8">

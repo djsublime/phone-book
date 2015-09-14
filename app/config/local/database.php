@@ -18,6 +18,8 @@ return array(
 	|
 	*/
 
+	'default' => 'sqlite',
+
 	'connections' => array(
 
 		'mysql' => array(
@@ -31,15 +33,10 @@ return array(
 			'prefix'    => '',
 		),
 
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'homestead',
-			'username' => 'homestead',
-			'password' => 'secret',
-			'charset'  => 'utf8',
+		'sqlite' => array(
+			'driver'   => 'sqlite',
+			'database' => storage_path('sqlite').'/phonebook.sqlite',
 			'prefix'   => '',
-			'schema'   => 'public',
 		),
 
 	),

@@ -18,8 +18,8 @@ class CreateContactTable extends Migration {
 			$table->string('name', 40);
 			$table->string('surname', 64);
 			$table->string('phone', 32)->unique();
-			$table->string('address', 255);
-			$table->mediumText('comment');
+			$table->string('address', 255)->nullable();
+			$table->mediumText('comment')->nullable();
 			$table->timestamps();
 			$table->index('name');
 			$table->index('surname');
