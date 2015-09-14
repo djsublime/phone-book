@@ -14,6 +14,7 @@
 		    <li role="presentation" class="active"><a href="#about-tab" aria-controls="about-tab" role="tab" data-toggle="tab">About</a></li>
 		    <li role="presentation"><a href="#no-js" aria-controls="no-js" role="tab" data-toggle="tab">NO-JS App</a></li>
 		    <li role="presentation"><a href="#rest" aria-controls="rest" role="tab" data-toggle="tab">RESTfull App</a></li>
+		    <li role="presentation"><a href="#task" aria-controls="task" role="tab" data-toggle="tab">App task</a></li>
 		  </ul>
 
 		  <!-- Tab panes -->
@@ -40,6 +41,7 @@
 		    	<p>
 		    		<ul>
 		    			<li>Using Laravel like RESTfull API</li>
+		    			<li>Pagination done on server side</li>
 		    			<li>Using AngularJS to create Restfull Client</li>
 		    		</ul>
     			</p>
@@ -57,8 +59,42 @@
     			<h3>To do: </h3>
     			<ol>
     				<li>Filter should be new request, at the moment just filtering array on current page done with angularjs filter</li>
+    				<li>AngularJS separate display and form controller from main controller</li>
     			</ol>
 		    	{{link_to_route('ngapp', 'Go There', $parameters = array(), $attributes = array('class'=>'btn btn-info btn-block'))}}
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="task">
+		    	<p>
+		    		Make a Phone-book web php 5 app.
+	    		</p>
+	    		<p>
+	    			Create a database in MySQL.
+	    		</p>
+	    		<p>
+	    			Table "contact" should include fields:
+	    			<ul>
+	    				<li>First Name</li>
+	    				<li>Last Name</li>
+	    				<li>Phone number</li>
+	    				<li>Address</li>
+	    				<li>Comment</li>
+	    			</ul>
+	    		</p>
+	    		<p>
+	    			There should be a CRUD user interface of existing contacts. Listing of contacts should include pagination. One page should contain 5 records max.
+	    		</p>
+	    		<p>
+	    			Search can be done by First Name and / or Last Name, the Phone number and Address.
+	    		</p>
+	    		<p>
+	    			Website structure should be clear, HTML should meet the basic semantic standards, does not require any additional styles (CSS).
+	    		</p>
+	    		<p>
+	    			We encourage you to optionally use Zend Framework 2, php composer, ajax/rest, jquery, css bootstrap.
+	    		</p>
+	    		<p>
+	    			Please include README file with proper documentation and instruction how to setup and run your app.
+	    		</p>
 		    </div>
 		  </div>
 		</div>

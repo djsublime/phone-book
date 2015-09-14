@@ -1,0 +1,38 @@
+<div class="panel" ng-class="{'panel-success':(vm.form.mode === 'add'), 'panel-warning':(vm.form.mode === 'edit')}">
+	<a href ng-if="vm.form.mode === 'edit'" ng-click="vm.form.mode = 'add';vm.form.data = {}" class="btn btn-warning btn-sm btn-block"> Cancel </a>
+	<div class="panel-heading">
+		<h3 class="panel-title text-center text-uppercase">
+			Add / Edit Contact
+		</h3>
+	</div>
+	<div class="panel-body">
+		<form ng-submit="vm.submitFn()" accept-charset="UTF-8">
+			<div ng-class="{'has-error':vm.form.errors.name}" class="form-group">
+				<label for="name">First Name</label>
+				<input class="form-control input-sm" ng-model="vm.form.data.name" type="text" id="name">
+				<p class="help-block" ng-bind="vm.form.errors.name"></p>
+			</div>
+			<div ng-class="{'has-error':vm.form.errors.surname}" class="form-group">
+				<label for="surname">Last Name</label>
+				<input class="form-control input-sm" ng-model="vm.form.data.surname" type="text" id="surname">
+				<p class="help-block" ng-bind="vm.form.errors.surname"></p>
+			</div>
+			<div ng-class="{'has-error':vm.form.errors.phone}" class="form-group">
+				<label for="phone">Phone</label>
+				<input class="form-control input-sm" ng-model="vm.form.data.phone" type="text" id="phone">
+				<p class="help-block" ng-bind="vm.form.errors.phone"></p>								
+			</div>
+			<div class="form-group">
+				<label for="address">Address</label>
+				<input class="form-control input-sm" ng-model="vm.form.data.address" type="text" id="address">
+			</div>
+			<div class="form-group">
+				<label for="comment">Comment</label>
+				<textarea class="form-control input-sm" ng-model="vm.form.data.comment" cols="50" rows="10" id="comment"></textarea>
+			</div>
+			<div class="form-group">
+				<input class="form-control btn btn-success" type="submit" value="Save">
+			</div>
+		</form>
+	</div>
+</div>

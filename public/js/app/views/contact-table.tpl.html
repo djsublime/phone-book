@@ -1,0 +1,70 @@
+<div class="panel panel-default phone-book">
+	<div class="panel-heading clearfix">
+		<h1 class="panel-title text-center text-uppercase">Contact list</h1>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th nowrap>First Name</th>
+					<th nowrap>Last Name</th>
+					<th nowrap>Phone</th>
+					<th nowrap>Address</th>
+					<th nowrap>Comments</th>
+					<th nowrap>Updated</th>
+					<th nowrap>Action</th>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="text" class="form-control input-sm" ng-model="vm.filter.name" placeholder="by name"></td>
+					<td><input type="text" class="form-control input-sm" ng-model="vm.filter.surname" placeholder="by surname"></td>
+					<td><input type="text" class="form-control input-sm" ng-model="vm.filter.phone" placeholder="by phone"></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="(key,contact) in vm.colection.data | filter:{name:vm.filter.name,surname:vm.filter.surname,phone:vm.filter.phone}" 
+					ng-class="{'bg-success': (vm.form.updated === contact.id), 'bg-warning': ((vm.form.data.id === contact.id) && (vm.form.mode === 'edit'))}">
+					<td ng-bind="(vm.colection.from + key)"></td>
+					<td ng-bind="contact.name"></td>
+					<td ng-bind="contact.surname"></td>
+					<td ng-bind="contact.phone"></td>
+					<td ng-bind="contact.address"></td>
+					<td ng-bind="contact.comment"></td>
+					<td ng-bind="contact.updated_at"></td>
+					<td nowrap="">
+						<a ng-click="vm.editFn(contact)" href class="btn btn-info btn-sm">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</a>
+						<a href class="btn btn-danger btn-sm" ng-click="vm.deleteEntry(contact.id)">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer clearfix">
+		<form class="pull-left form-inline">
+			<div class="form-group">
+				<label >Per page: </label>
+  				<select ng-model="vm.table.per_page" ng-change="vm.paginateFn(1,vm.table.per_page)" class="form-control input-sm">
+	  				<option ng-repeat="sopt in [5,10,15,20,50]" value="{{sopt}}" ng-selected="vm.table.per_page == sopt" ng-bind="sopt"></option>
+  				</select>
+			</div>
+			<div class="form-group">
+				<span ng-bind-template="Total: {{vm.colection.total}}" class=""></span>
+			</div>
+		</form>
+		<ul class="pagination pull-right">
+		  <li 
+		  	ng-class="{'active':(i === vm.colection.current_page)}" 
+	  		ng-if="i !== 0" 
+	  		ng-repeat="i in [] | range: (vm.colection.last_page + 1)"><a href ng-click="vm.paginateFn(i,vm.table.per_page)" ng-bind="i"></a></li>
+		</ul>
+	</div>
+</div>
