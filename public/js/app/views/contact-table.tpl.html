@@ -20,6 +20,7 @@
 					<td><input type="text" class="form-control input-sm" ng-model="vm.filter.name" placeholder="by name"></td>
 					<td><input type="text" class="form-control input-sm" ng-model="vm.filter.surname" placeholder="by surname"></td>
 					<td><input type="text" class="form-control input-sm" ng-model="vm.filter.phone" placeholder="by phone"></td>
+					<td><input type="text" class="form-control input-sm" ng-model="vm.filter.address" placeholder="by address"></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
@@ -27,7 +28,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="(key,contact) in vm.colection.data | filter:{name:vm.filter.name,surname:vm.filter.surname,phone:vm.filter.phone}" 
+				<tr ng-repeat="(key,contact) in vm.colection.data | filter:{name:vm.filter.name,surname:vm.filter.surname,phone:vm.filter.phone,address:vm.filter.address}" 
 					ng-class="{'bg-success': (vm.form.updated === contact.id), 'bg-warning': ((vm.form.data.id === contact.id) && (vm.form.mode === 'edit'))}">
 					<td ng-bind="(vm.colection.from + key)"></td>
 					<td ng-bind="contact.name"></td>

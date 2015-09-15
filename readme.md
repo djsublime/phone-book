@@ -8,8 +8,9 @@
 
 ## Installation
  ```
-clone https://github.com/djsublime/phone-book.git {directory} 
+git clone https://github.com/djsublime/phone-book.git {directory} 
 cd {directory}
+composer install
 sudo chmod -R 777 app/storage/
  ```
 
@@ -22,7 +23,7 @@ php artisan migrate
 php artisan db:seed
  ```
 
- if chosen db driver sqlite set sqlite file to be writable
+ !!!! if chosen db driver sqlite set sqlite file to be writable (exmp. sudo chmod -R 777 app/storage/) !!!!
 
 ##Frontend assets
  ```

@@ -15,6 +15,7 @@
 		    <li role="presentation"><a href="#no-js" aria-controls="no-js" role="tab" data-toggle="tab">NO-JS App</a></li>
 		    <li role="presentation"><a href="#rest" aria-controls="rest" role="tab" data-toggle="tab">RESTfull App</a></li>
 		    <li role="presentation"><a href="#task" aria-controls="task" role="tab" data-toggle="tab">App task</a></li>
+		    <li role="presentation"><a href="#answer" aria-controls="task" role="tab" data-toggle="tab">Answers</a></li>
 		  </ul>
 
 		  <!-- Tab panes -->
@@ -95,6 +96,13 @@
 	    		<p>
 	    			Please include README file with proper documentation and instruction how to setup and run your app.
 	    		</p>
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="answer">
+			    <div class="list-group">
+		    		<a class="list-group-item" href="https://gist.github.com/djsublime/0742b1875b057cb3861c" target="_blank">Task 1</a>
+		    		<a class="list-group-item" href="https://gist.github.com/djsublime/78c83df6547f4b7339ec" target="_blank">Task 2-1</a>
+		    		<a class="list-group-item" href="https://gist.github.com/djsublime/2750b64a1828b5405e87" target="_blank">Task 2-2</a>
+			    </div>
 		    </div>
 		  </div>
 		</div>
